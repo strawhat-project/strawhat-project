@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.strawhat.boot</groupId>
+        <artifactId>strawhat-boot-starter-parent</artifactId>
+        <version>2.2.5.RELEASE</version>
+    </parent>
+
+    <groupId>com.strawhat</groupId>
+    <artifactId>strawhat-parent</artifactId>
+    <version>${revision}</version>
+
+    <packaging>pom</packaging>
+    <name>Strawhat Parent</name>
+    <url>http://www.strawhat.com(For internal use only)</url>
+    <inceptionYear>2020-Now</inceptionYear>
+    <description>Strawhat Parent</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!-- Projects -->
+        <strawhat.development.version>1.0.1</strawhat.development.version>
+
+        <revision>2.0.0-SNAPSHOT</revision>
+    </properties>
+
+    <modules>
+        <module>strawhat-dependencies</module>
+        <module>strawhat-common</module>
+        <module>strawhat-dal</module>
+        <module>strawhat-domain</module>
+        <module>strawhat-btl</module>
+        <module>strawhat-social</module>
+        <module>strawhat-rpc</module>
+        <module>strawhat-web</module>
+        <module>strawhat-config</module>
+        <module>strawhat</module>
+
+        <module>strawhat-all</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.strawhat</groupId>
+                <artifactId>strawhat-dependencies</artifactId>
+                <version>${revision}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.strawhat</groupId>
+            <artifactId>strawhat-base</artifactId>
+        </dependency>
+    </dependencies>
+
+    <!-- Maven 多环境配置 -->
+    <profiles>
+        <profile>
+            <id>default</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+
+            <build>
+                <plugins>
+                    <!-- compiler-plugin -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>io.spring.javaformat</groupId>
+                        <artifactId>spring-javaformat-maven-plugin</artifactId>
+                    </plugin>
+
+                    <!-- mvn clean -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-clean-plugin</artifactId>
+                    </plugin>
+
+                    <!-- mvn install -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-install-plugin</artifactId>
+                    </plugin>
+
+                    <!-- JavaDoc 生成插件 -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                    </plugin>
+
+                    <!-- 测试用例插件 -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                    </plugin>
+
+                    <!--
+                    依赖冲突检查
+                    在进行 mvn clean package 的时候，会在 console 中打印出冲突的 jar 版本和其父 pom
+                    -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-enforcer-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>

@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.strawhat</groupId>
+    <artifactId>strawhat-dependencies</artifactId>
+    <version>${revision}</version>
+
+    <packaging>pom</packaging>
+    <name>Strawhat Dependencies</name>
+    <url>http://www.strawhat.com(For internal use only)</url>
+    <inceptionYear>2020-Now</inceptionYear>
+    <description>依赖管理</description>
+
+
+    <properties>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!-- Spring Projects -->
+        <strawhat-boot.version>2.2.5.RELEASE</strawhat-boot.version>
+        <strawhat-cloud.version>2.2.5.RELEASE</strawhat-cloud.version>
+
+        <!-- Tools -->
+        <guava.version>29.0-jre</guava.version>
+        <lombok.version>1.18.12</lombok.version>
+        <mapstruct.version>1.3.1.Final</mapstruct.version>
+
+        <strawhat-base.version>1.0.0</strawhat-base.version>
+
+        <revision>2.0.0-SNAPSHOT</revision>
+    </properties>
+
+    <developers>
+        <developer>
+            <id>bcsix</id>
+            <name>bcsixxyx</name>
+            <email>bcsix_home@163.com</email>
+        </developer>
+    </developers>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Strawhat Boot -->
+            <dependency>
+                <groupId>com.strawhat.boot</groupId>
+                <artifactId>strawhat-boot-dependencies</artifactId>
+                <version>${strawhat-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Strawhat Cloud -->
+            <dependency>
+                <groupId>com.strawhat.cloud</groupId>
+                <artifactId>strawhat-cloud-dependencies</artifactId>
+                <version>${strawhat-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.strawhat</groupId>
+                <artifactId>strawhat-base</artifactId>
+                <version>${strawhat-base.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.strawhat</groupId>
+                <artifactId>strawhat-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.strawhat</groupId>
+                <artifactId>strawhat-dal</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.strawhat</groupId>
+                <artifactId>strawhat-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.strawhat</groupId>
+                <artifactId>strawhat-btl</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.strawhat</groupId>
+                <artifactId>strawhat-social</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.strawhat</groupId>
+                <artifactId>strawhat-rpc</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.strawhat</groupId>
+                <artifactId>strawhat-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.strawhat</groupId>
+                <artifactId>strawhat-config</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.strawhat</groupId>
+                <artifactId>strawhat</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- Maven 多环境配置 -->
+    <profiles>
+        <profile>
+            <id>default</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+                <!-- 用于自动发布 RELEASE TAG -->
+                <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+                <!-- 配合 maven-release-plugin 插件发布到 Git（GitLab，GitHub 等） -->
+                <maven-scm-provider-jgit-plugin.version>1.9.5</maven-scm-provider-jgit-plugin.version>
+                <!-- Spring 提供的代码美化插件 -->
+                <spring-javaformat-maven-plugin.version>0.0.22</spring-javaformat-maven-plugin.version>
+
+                <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
+
+                <maven-install-plugin.version>3.0.0-M1</maven-install-plugin.version>
+
+                <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
+
+                <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
+
+                <maven-enforcer-plugin.version>3.0.0-M3</maven-enforcer-plugin.version>
+
+            </properties>
+
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <!-- compiler-plugin -->
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-compiler-plugin</artifactId>
+                            <version>${maven-compiler-plugin.version}</version>
+                            <configuration>
+                                <source>1.8</source>
+                                <target>1.8</target>
+                                <annotationProcessorPaths>
+                                    <path>
+                                        <groupId>org.mapstruct</groupId>
+                                        <artifactId>mapstruct-processor</artifactId>
+                                        <version>${mapstruct.version}</version>
+                                    </path>
+                                    <path>
+                                        <groupId>org.projectlombok</groupId>
+                                        <artifactId>lombok</artifactId>
+                                        <version>${lombok.version}</version>
+                                    </path>
+                                </annotationProcessorPaths>
+                            </configuration>
+                        </plugin>
+
+                        <plugin>
+                            <groupId>io.spring.javaformat</groupId>
+                            <artifactId>spring-javaformat-maven-plugin</artifactId>
+                            <version>${spring-javaformat-maven-plugin.version}</version>
+                        </plugin>
+
+                        <!-- mvn clean -->
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-clean-plugin</artifactId>
+                            <version>${maven-clean-plugin.version}</version>
+                            <configuration>
+                                <filesets>
+                                    !-- 清理 JRebel 产生的备份文件 --
+                                    <fileset>
+                                        <directory>${basedir}/**</directory>
+                                        <includes>
+                                            <include>.rebel.xml.bak</include>
+                                        </includes>
+                                    </fileset>
+                                </filesets>
+                            </configuration>
+                        </plugin>
+
+                        <!-- mvn install -->
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-install-plugin</artifactId>
+                            <version>${maven-install-plugin.version}</version>
+                        </plugin>
+
+                        <!-- JavaDoc 生成插件 -->
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-javadoc-plugin</artifactId>
+                            <version>${maven-javadoc-plugin.version}</version>
+                            <configuration>
+                                <!-- 生成 HTML 后 title 的名字 -->
+                                <windowtitle>strawhat ${project.version} JavaDocs</windowtitle>
+                                <!--
+                                解决控制台乱码问题
+                                需要在【环境变量】中添加【系统变量】
+                                - 变量名：JAVA_TOOL_OPTIONS
+                                - 变量值：-Dfile.encoding=UTF-8
+                                -->
+                                <charset>UTF8</charset>
+                                <encoding>UTF8</encoding>
+                                <docencoding>UTF8</docencoding>
+                                <!--
+                                生成 JavaDoc 所在目录：reportOutputDirectory/destDir
+                                - reportOutputDirectory：输出的目录位置
+                                - destDir：文档生成的目录位置
+                                -->
+                                <destDir>javadocs</destDir>
+                                <reportOutputDirectory>${basedir}/docs</reportOutputDirectory>
+                            </configuration>
+                        </plugin>
+
+                        <!-- 测试用例插件 -->
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-surefire-plugin</artifactId>
+                            <version>${maven-surefire-plugin.version}</version>
+                            <configuration>
+                                <!-- 设置默认跳过测试 -->
+                                <skip>true</skip>
+                                <includes>
+                                    <include>**/*Tests.java</include>
+                                </includes>
+                                <excludes>
+                                    <exclude>**/Abstract*.java</exclude>
+                                </excludes>
+                                <systemPropertyVariables>
+                                    <java.security.egd>file:/dev/./urandom</java.security.egd>
+                                    <java.awt.headless>true</java.awt.headless>
+                                </systemPropertyVariables>
+                            </configuration>
+                        </plugin>
+
+                        <!--
+                        依赖冲突检查
+                        在进行 mvn clean package 的时候，会在 console 中打印出冲突的 jar 版本和其父 pom
+                        -->
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-enforcer-plugin</artifactId>
+                            <version>${maven-enforcer-plugin.version}</version>
+                            <executions>
+                                <execution>
+                                    <id>enforce-rules</id>
+                                    <goals>
+                                        <goal>enforce</goal>
+                                    </goals>
+                                    <configuration>
+                                        <rules>
+                                            <bannedDependencies>
+                                                <excludes>
+                                                    <exclude>commons-logging:*:*</exclude>
+                                                </excludes>
+                                                <searchTransitive>true</searchTransitive>
+                                            </bannedDependencies>
+                                        </rules>
+                                        <fail>true</fail>
+                                    </configuration>
+                                </execution>
+                            </executions>
+                        </plugin>
+
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+    </profiles>
+
+</project>

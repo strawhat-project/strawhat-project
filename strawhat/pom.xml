@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.strawhat</groupId>
+        <artifactId>strawhat-parent</artifactId>
+        <version>${revision}</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>strawhat</artifactId>
+
+    <packaging>jar</packaging>
+    <name>Strawhat</name>
+    <url>http://www.strawhat.com</url>
+    <inceptionYear>2020-Now</inceptionYear>
+    <description>Strawhat Object</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!-- Projects -->
+        <strawhat.version>1.0.0</strawhat.version>
+        <strawhat.development.version>1.0.1</strawhat.development.version>
+    </properties>
+
+</project>

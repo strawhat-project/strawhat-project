@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.strawhat</groupId>
+        <artifactId>strawhat-parent</artifactId>
+        <version>${revision}</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>strawhat-all</artifactId>
+
+    <name>Strawhat All</name>
+
+    <url>http://www.strawhat.com(For internal use only)</url>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.strawhat</groupId>
+            <artifactId>strawhat-common</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.strawhat</groupId>
+            <artifactId>strawhat-dal</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.strawhat</groupId>
+            <artifactId>strawhat-domain</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.strawhat</groupId>
+            <artifactId>strawhat-btl</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.strawhat</groupId>
+            <artifactId>strawhat-social</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.strawhat</groupId>
+            <artifactId>strawhat-rpc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.strawhat</groupId>
+            <artifactId>strawhat-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.strawhat</groupId>
+            <artifactId>strawhat-config</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.strawhat</groupId>
+            <artifactId>strawhat</artifactId>
+        </dependency>
+
+    </dependencies>
+
+
+</project>
