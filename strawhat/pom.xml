@@ -15,7 +15,7 @@
 
     <packaging>jar</packaging>
     <name>Strawhat</name>
-    <url>http://www.strawhat.com</url>
+    <url>http://www.strawhat.com(For internal use only)</url>
     <inceptionYear>2020-Now</inceptionYear>
     <description>Strawhat Object</description>
 
